@@ -16,7 +16,7 @@
 
 브랜치명 - 해당 브랜치에서 구현할 기능
 
-- setting/init - Create react app, 필요한 라이브러리 설치, eslint, prettier
+- setting/init - Create react app, 필요한 라이브러리 설치, eslint, prettier, mr/issue templates
 - feat/start - Add input form, Add test start button(활성/비활성), 유저 정보 저장, 이름 입력, 성별 선택에 대한 안내 메시지
 - feat/example - mockData로 페이지 구현, Add test start button(활성/비활성), Add progressbar(0%)
 - api/get_test - 심리검사 문항 요청 api로 get response 확인
