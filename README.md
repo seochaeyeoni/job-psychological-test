@@ -6,8 +6,9 @@
 
 - Javascript
 - Functional Components + Hooks
-- React `17.0.1`
-- bootstrap `4.6`
+- React `17.0.2`
+- bootstrap `5.1`
+- react-bootstrap `1.6.1`
 - react-router-dom `5.2`
 - axios `0.21.1`
 
