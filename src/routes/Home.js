@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../components/Button';
-import NameInput from '../components/Input';
+import Input from '../components/Input';
 import RadioButton from '../components/RadioButton';
 import { useRecoilState } from 'recoil';
 import userState from '../atom';
@@ -23,7 +23,6 @@ const Home = () => {
     let today = new Date();
     console.log('checkUser');
     const msg = '한글 이름 2~4자 이내로 입력해주세요';
-    console.log(user);
     if (!validator(user.name)) alert(msg);
     else {
       const temp = { ...user };
@@ -33,13 +32,25 @@ const Home = () => {
     }
   };
 
+  const inputChange = value => {
+    const temp = { ...user };
+    temp.name = value;
+    setUser(temp);
+  };
+
+  const radioChange = value => {
+    const temp = { ...user };
+    temp.gender = value;
+    setUser(temp);
+  };
+
   return (
     <>
       <h1>직업가치관검사</h1>
       <h5>이름</h5>
-      <NameInput />
+      <Input onChange={inputChange}/>
       <h5>성별</h5>
-      <RadioButton value1="남자" value2="여자" />
+      <RadioButton value1="남자" value2="여자" onChange={radioChange}/>
       <Button name="검사시작" disabled={status} onClick={checkUser} />
     </>
   );
