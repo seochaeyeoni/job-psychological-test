@@ -1,13 +1,12 @@
 import { useRecoilState } from 'recoil';
 import userState from '../atom';
 
-const NameInput = ({ onChanged }) => {
+const NameInput = () => {
   const [value, setValue] = useRecoilState(userState);
   const inputChange = e => {
     const temp = { ...value };
     temp.name = e.target.value;
     setValue(temp);
-    onChanged();
   };
   return (
     <input
