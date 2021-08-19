@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import NameInput from '../components/Input';
 import RadioButton from '../components/RadioButton';
@@ -10,13 +10,9 @@ const Home = () => {
   // useRecoilValue 쓰니까 TypeError: Object is not a function
   const [user, setUser] = useRecoilState(userState);
 
-  const observeChange = () => {
-    console.log('observeChange');
-    // 그 이전 입력값이 저장되어 있다...
-    console.log(user);
-    if (user.name !== '' && user.gender !== '') setStatus(false);
-    else setStatus(true);
-  };
+  useEffect(() => {
+    setStatus(!user.gender || !user.name);
+  }, [user.gender, user.name]);
 
   const validator = value => {
     const reg = /^[가-힣]{2,4}$/;
@@ -41,9 +37,9 @@ const Home = () => {
     <>
       <h1>직업가치관검사</h1>
       <h5>이름</h5>
-      <NameInput onChanged={observeChange} />
+      <NameInput />
       <h5>성별</h5>
-      <RadioButton value1="남자" value2="여자" onChanged={observeChange} />
+      <RadioButton value1="남자" value2="여자" />
       <Button name="검사시작" disabled={status} onClick={checkUser} />
     </>
   );

@@ -2,13 +2,12 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import userState from '../atom';
 
-const RadioButton = ({value1, value2, onChanged}) => {
+const RadioButton = ({value1, value2}) => {
   const [value, setValue] = useRecoilState(userState);
   const radioChange = e => {
     const temp = { ...value };
     temp.gender = e.target.value;
     setValue(temp);
-    onChanged();
   };
   return (
     <>
