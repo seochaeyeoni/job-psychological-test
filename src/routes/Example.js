@@ -8,6 +8,12 @@ const Example = () => {
     const radioChange = () => {
         setStatus(false)
       };
+
+    const startTest = () => {
+        // api로 get 해서 recoil에 저장하고
+        // test로 넘기기
+    }
+
   return (
     <>
       <ProgressBar percent={0} />
@@ -16,8 +22,9 @@ const Example = () => {
         Question="두개 가치 중에 자신에게 더 중요한 가치를 선택하세요."
         value1="능력발휘"
         value2="자율성"
+        onClick={radioChange}
       />
-      <Button name="검사시작" disabled={status} onClick={radioChange}/>
+      <Button name="검사시작" disabled={status} onClick={startTest}/>
     </>
   );
 };
