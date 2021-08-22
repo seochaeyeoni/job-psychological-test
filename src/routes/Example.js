@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import Button from '../components/Button'
 import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
+import { useHistory } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { questionState } from '../atom'
+import { getQuestions } from '../api/career';
 
 const Example = () => {
+    const history = useHistory();
     const [status, setStatus] = useState(true);
+    // eslint-disable-next-line no-unused-vars
+    const [question, setQuestion] = useRecoilState(questionState);
     const radioChange = () => {
         setStatus(false)
       };
@@ -12,6 +19,8 @@ const Example = () => {
     const startTest = () => {
         // api로 get 해서 recoil에 저장하고
         // test로 넘기기
+        setQuestion(getQuestions())
+        history.push('/test/1');
     }
 
   return (

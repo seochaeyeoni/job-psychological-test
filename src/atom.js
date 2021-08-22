@@ -9,4 +9,16 @@ const userState = atom({
     }
 });
 
+export const questionState = atom({
+    key: "questionState",
+    default: [{
+        question: "",
+        answer01: "",
+        answer02: "",
+        answerScore01: "",
+        answerScore02: ""
+
+    },]
+})
+
 export default userState;
