@@ -1,19 +1,20 @@
 import React from 'react';
 
-const RadioButton = ({value, onChange }) => {
+const RadioButton = ({value, hiddenValue, group, answer, onChange }) => {
   const radioChange = e => {
-    onChange(e.target.value);
+    onChange(group, e.target.value);
   };
   return (
     <>
       <div className="form-check">
         <input
-          value={value}
+          checked={answer}
+          value={hiddenValue}
           class="form-check-input"
           type="radio"
-          name="flexRadioDefault"
+          name={group}
           id="flexRadioDefault1"
-          onClick={radioChange}
+          onChange={radioChange}
         />
         <label class="form-check-label" for="flexRadioDefault1">
           {value}

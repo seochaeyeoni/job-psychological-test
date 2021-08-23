@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { questionState } from '../atom';
 import Button from '../components/Button';
@@ -9,29 +9,45 @@ import { useHistory } from 'react-router-dom';
 const Test = () => {
   const history = useHistory();
   const questionValue = useRecoilValue(questionState);
-  const [page, setPage] = useState(1)
+  const [answerList, setAnswerList] = useState(new Array(28).fill(0));
+  const [page, setPage] = useState(1);
   const progress = (100 / 6) * page;
 
-  const radioChange = () => {};
+  useEffect(() => {
+    console.log(answerList)
+  }, [answerList]);
+
+  const radioChange = (index, answer) => {
+    const newAnswerList = [...answerList];
+    // eslint-disable-next-line no-self-assign
+    setAnswerList(newAnswerList.map((c, i) => (i === index ? (c = answer) : (c = c))));
+  };
 
   const previousPage = () => {
-      if (page > 1) setPage(page-1)
-      else history.push('/example')
-  }
+    if (page > 1) setPage(page - 1);
+    else history.push('/example');
+  };
 
   const nextPage = () => {
-      if (page < 6) setPage(page+1)
-      else history.push('/result')
+    if (page < 6) {
+      setPage(page + 1);
+      questions();
+    } else history.push('/result');
   };
 
   const questions = () => {
     return (
       <>
-        {questionValue.slice((page-1)*5,5*page).map((data, index) => (
+        {questionValue.slice((page - 1) * 5, 5 * page).map((data, index) => (
           <Question
+            key={index + 5 * (page - 1)}
             Question={data.question}
             value1={data.answer01}
             value2={data.answer02}
+            hiddenValue1={data.answerScore01}
+            hiddenValue2={data.answerScore02}
+            group={index + 5 * (page - 1)}
+            checked={answerList[index + 5 * (page - 1)]}
             onClick={radioChange}
           />
         ))}
