@@ -11,11 +11,13 @@ const Test = () => {
   const questionValue = useRecoilValue(questionState);
   const [answerList, setAnswerList] = useState(new Array(28).fill(0));
   const [page, setPage] = useState(1);
+  const [status, setStatus] = useState(true);
   const progress = (100 / 6) * page;
 
   useEffect(() => {
     console.log(answerList)
-  }, [answerList]);
+    setStatus(answerList.slice((page - 1) * 5, 5 * page).includes(0))
+  }, [answerList, page]);
 
   const radioChange = (index, answer) => {
     const newAnswerList = [...answerList];
@@ -31,7 +33,6 @@ const Test = () => {
   const nextPage = () => {
     if (page < 6) {
       setPage(page + 1);
-      questions();
     } else history.push('/result');
   };
 
@@ -60,7 +61,7 @@ const Test = () => {
       <ProgressBar percent={progress} />
       {questions()}
       <Button name="이전" disabled={false} onClick={previousPage} />
-      <Button name="다음" disabled={false} onClick={nextPage} />
+      <Button name="다음" disabled={status} onClick={nextPage} />
     </>
   );
 };
