@@ -15,8 +15,7 @@ const Test = () => {
   const progress = (100 / 6) * page;
 
   useEffect(() => {
-    console.log(answerList)
-    setStatus(answerList.slice((page - 1) * 5, 5 * page).includes(0))
+    setStatus(answerList.slice((page - 1) * 5, 5 * page).includes(0));
   }, [answerList, page]);
 
   const radioChange = (index, answer) => {
@@ -33,7 +32,23 @@ const Test = () => {
   const nextPage = () => {
     if (page < 6) {
       setPage(page + 1);
-    } else history.push('/result');
+    } else goToResult();
+  };
+
+  const goToResult = () => {
+    // api로 post 해서 recoil에 저장하고
+    // result로 넘기기
+    const answers = answerList.map((value, index) => `B${index+1}=${value}`).join(" ")
+    const body = {
+      qestrnSeq: '6',
+      trgetSe: '1002008',
+      name: '',
+      gender: '',
+      startDtm: 0,
+      answers,
+    };
+
+    history.push('/result');
   };
 
   const questions = () => {
