@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RadioButton = ({value1, value2, onChange }) => {
+const RadioButton = ({value, onChange }) => {
   const radioChange = e => {
     onChange(e.target.value);
   };
@@ -8,7 +8,7 @@ const RadioButton = ({value1, value2, onChange }) => {
     <>
       <div className="form-check">
         <input
-          value={value1}
+          value={value}
           class="form-check-input"
           type="radio"
           name="flexRadioDefault"
@@ -16,22 +16,10 @@ const RadioButton = ({value1, value2, onChange }) => {
           onClick={radioChange}
         />
         <label class="form-check-label" for="flexRadioDefault1">
-          {value1}
+          {value}
         </label>
       </div>
-      <div class="form-check">
-        <input
-          value={value2}
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          onClick={radioChange}
-        />
-        <label class="form-check-label" for="flexRadioDefault2">
-          {value2}
-        </label>
-      </div>
+    
     </>
   );
 };
