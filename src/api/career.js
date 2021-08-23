@@ -13,7 +13,6 @@ export const getQuestions = async () => {
         params: { apikey: apiKey, q: 6 }
     });
     try {
-        console.log(typeof(res.data.RESULT))
         return parseQuestions(res.data.RESULT);
     } catch {
         return Error(res.ERROR_REASON);
