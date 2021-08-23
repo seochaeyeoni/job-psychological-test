@@ -19,7 +19,7 @@ const Example = () => {
     const startTest = () => {
         // api로 get 해서 recoil에 저장하고
         // test로 넘기기
-        setQuestion(getQuestions())
+        getQuestions().then(value => setQuestion(value))
         history.push('/test/1');
     }
 
