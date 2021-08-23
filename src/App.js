@@ -12,7 +12,7 @@ function App() {
       <RecoilRoot>
         <Route exact path="/" component={Home} />
         <Route exact path="/example" component={Example} />
-        <Route exact path="/test/:page" component={Test} />
+        <Route exact path="/test" component={Test} />
       </RecoilRoot>
     </HashRouter>
   );

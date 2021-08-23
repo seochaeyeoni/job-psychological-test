@@ -51,7 +51,8 @@ const Home = () => {
       <h5>이름</h5>
       <Input onChange={inputChange} />
       <h5>성별</h5>
-      <RadioButton value1="남자" value2="여자" onChange={radioChange} />
+      <RadioButton value="남자" group="gender" onChange={radioChange} />
+      <RadioButton value="여자" group="gender" onChange={radioChange} />
       <Button name="검사시작" disabled={status} onClick={checkUser} />
     </>
   );
