@@ -37,10 +37,10 @@ const Test = () => {
   const nextPage = () => {
     if (page < 6) {
       setPage(page + 1);
-    } else goToResult();
+    } else goToFinish();
   };
 
-  const goToResult = () => {
+  const goToFinish = () => {
     // api로 post 해서 recoil에 저장하고
     // result로 넘기기
     const answers = answerList.map((value, index) => `B${index + 1}=${value}`).join(' ');
@@ -53,7 +53,7 @@ const Test = () => {
       answers,
     };
     getResult(body, storeWonscores, storeJobs, storeMajors);
-    history.push('/result');
+    history.push('/finish');
   };
 
   const storeWonscores = wonScores => {
