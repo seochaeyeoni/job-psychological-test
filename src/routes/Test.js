@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
 import { useHistory } from 'react-router-dom';
+import { getResult } from '../api/career';
 
 const Test = () => {
   const history = useHistory();
@@ -38,7 +39,7 @@ const Test = () => {
   const goToResult = () => {
     // api로 post 해서 recoil에 저장하고
     // result로 넘기기
-    const answers = answerList.map((value, index) => `B${index+1}=${value}`).join(" ")
+    const answers = answerList.map((value, index) => `B${index + 1}=${value}`).join(' ');
     const body = {
       qestrnSeq: '6',
       trgetSe: '1002008',
@@ -47,7 +48,7 @@ const Test = () => {
       startDtm: 0,
       answers,
     };
-
+    getResult(body);
     history.push('/result');
   };
 
