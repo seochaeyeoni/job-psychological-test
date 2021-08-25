@@ -29,15 +29,15 @@ const parseQuestions = result => {
   }));
 };
 
-export const getResult = async (body, storeWonscores) => {
+export const getResult = async (body, storeWonscores, storeJobs, storeMajors) => {
   postReport(body).then(url =>
     getWonScore(url).then(values => {
       storeWonscores(values[0]);
       getAverageJobs(values[1], values[2]).then(jobs => {
-        console.log(jobs);
+        storeJobs(jobs);
       });
       getAverageMajors(values[1], values[2]).then(majors => {
-        console.log(majors);
+        storeMajors(majors);
       });
     }),
   );

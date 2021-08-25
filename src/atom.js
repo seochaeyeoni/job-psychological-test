@@ -27,4 +27,14 @@ export const wonScoreState = atom({
   default: {},
 });
 
+export const jobState = atom({
+  key: 'jobState',
+  default: [],
+});
+
+export const majorState = atom({
+  key: 'majorState',
+  default: [],
+});
+
 export default userState;
