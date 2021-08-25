@@ -5,6 +5,7 @@ import './App.css';
 import Home from './routes/Home';
 import Example from './routes/Example';
 import Test from './routes/Test';
+import Finish from './routes/Finish';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/example" component={Example} />
         <Route exact path="/test" component={Test} />
+        <Route exact path="/finish" component={Finish} />
       </RecoilRoot>
     </HashRouter>
   );
