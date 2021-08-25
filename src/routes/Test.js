@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { questionState } from '../atom';
 import Button from '../components/Button';
 import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
 import { useHistory } from 'react-router-dom';
+import { getResult } from '../api/career';
+import { wonScoreState } from '../atom';
 
 const Test = () => {
   const history = useHistory();
   const questionValue = useRecoilValue(questionState);
+  // eslint-disable-next-line
+  const [wonScore, setWonScore] = useRecoilState(wonScoreState);
   const [answerList, setAnswerList] = useState(new Array(28).fill(0));
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(true);
@@ -38,7 +42,7 @@ const Test = () => {
   const goToResult = () => {
     // api로 post 해서 recoil에 저장하고
     // result로 넘기기
-    const answers = answerList.map((value, index) => `B${index+1}=${value}`).join(" ")
+    const answers = answerList.map((value, index) => `B${index + 1}=${value}`).join(' ');
     const body = {
       qestrnSeq: '6',
       trgetSe: '1002008',
@@ -47,9 +51,13 @@ const Test = () => {
       startDtm: 0,
       answers,
     };
-
+    getResult(body, storeWonscores);
     history.push('/result');
   };
+
+  const storeWonscores = (wonScores) => {
+      setWonScore(wonScores)
+  }
 
   const questions = () => {
     return (
