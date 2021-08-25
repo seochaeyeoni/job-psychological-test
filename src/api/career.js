@@ -29,12 +29,16 @@ const parseQuestions = result => {
   }));
 };
 
-export const getResult = async (body, storeWonscores) => {
+export const getResult = async (body, storeWonscores, storeJobs, storeMajors) => {
   postReport(body).then(url =>
     getWonScore(url).then(values => {
-      storeWonscores(values[0])
-      getAverageJobs(values[1], values[2]);
-      getAverageMajors(values[1], values[2]);
+      storeWonscores(values[0]);
+      getAverageJobs(values[1], values[2]).then(jobs => {
+        storeJobs(jobs);
+      });
+      getAverageMajors(values[1], values[2]).then(majors => {
+        storeMajors(majors);
+      });
     }),
   );
 };
@@ -76,6 +80,32 @@ const parseWonScore = result => {
   return [unordered, ordered[0][0], ordered[1][0]];
 };
 
-const getAverageJobs = (result1, result2) => {};
+const getAverageJobs = async (result1, result2) => {
+  try {
+    const res = await axios
+      .create({
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .get('https://www.career.go.kr/inspct/api/psycho/value/jobs', {
+        params: { no1: result1, no2: result2 },
+      });
+    return res.data;
+  } catch (e) {
+    return Error(e);
+  }
+};
 
-const getAverageMajors = (result1, result2) => {};
+const getAverageMajors = async (result1, result2) => {
+  try {
+    const res = await axios
+      .create({
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .get('https://www.career.go.kr/inspct/api/psycho/value/majors', {
+        params: { no1: result1, no2: result2 },
+      });
+    return res.data;
+  } catch (e) {
+    return Error(e);
+  }
+};

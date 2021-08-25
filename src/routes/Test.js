@@ -6,13 +6,14 @@ import ProgressBar from '../components/ProgressBar';
 import Question from '../components/Question';
 import { useHistory } from 'react-router-dom';
 import { getResult } from '../api/career';
-import { wonScoreState } from '../atom';
+import { wonScoreState, jobState, majorState } from '../atom';
 
 const Test = () => {
   const history = useHistory();
   const questionValue = useRecoilValue(questionState);
-  // eslint-disable-next-line
-  const [wonScore, setWonScore] = useRecoilState(wonScoreState);
+  const [, setWonScore] = useRecoilState(wonScoreState);
+  const [, setJob] = useRecoilState(jobState);
+  const [, setMajor] = useRecoilState(majorState);
   const [answerList, setAnswerList] = useState(new Array(28).fill(0));
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(true);
@@ -51,13 +52,21 @@ const Test = () => {
       startDtm: 0,
       answers,
     };
-    getResult(body, storeWonscores);
+    getResult(body, storeWonscores, storeJobs, storeMajors);
     history.push('/result');
   };
 
-  const storeWonscores = (wonScores) => {
-      setWonScore(wonScores)
-  }
+  const storeWonscores = wonScores => {
+    setWonScore(wonScores);
+  };
+
+  const storeJobs = jobs => {
+    setJob(jobs);
+  };
+
+  const storeMajors = majors => {
+    setMajor(majors);
+  };
 
   const questions = () => {
     return (
