@@ -29,9 +29,10 @@ const parseQuestions = result => {
   }));
 };
 
-export const getResult = async body => {
+export const getResult = async (body, storeWonscores) => {
   postReport(body).then(url =>
     getWonScore(url).then(values => {
+      storeWonscores(values[0])
       getAverageJobs(values[1], values[2]);
       getAverageMajors(values[1], values[2]);
     }),
