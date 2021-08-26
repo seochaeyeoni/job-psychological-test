@@ -6,6 +6,7 @@ import Home from './routes/Home';
 import Example from './routes/Example';
 import Test from './routes/Test';
 import Finish from './routes/Finish';
+import Result from './routes/Result';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/example" component={Example} />
         <Route exact path="/test" component={Test} />
         <Route exact path="/finish" component={Finish} />
+        <Route exact path="/result" component={Result} />
       </RecoilRoot>
     </HashRouter>
   );

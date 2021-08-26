@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-const userState = atom({
+export const userState = atom({
   key: 'userState',
   default: {
     name: '',
@@ -36,5 +36,3 @@ export const majorState = atom({
   key: 'majorState',
   default: [],
 });
-
-export default userState;
