@@ -5,6 +5,7 @@ import { userState, wonScoreState, jobState, majorState } from '../atom';
 import { interpretationNames, educationLevelNames, majorNames } from '../constants';
 import Chart from '../components/Chart';
 import UserTable from '../components/UserTable';
+import JobMajorTable from '../components/JobMajorTable';
 
 const Finish = () => {
   const userValue = useRecoilValue(userState);
@@ -16,6 +17,7 @@ const Finish = () => {
   const resetJob = useResetRecoilState(userState);
   const resetMajor = useResetRecoilState(userState);
   const history = useHistory();
+  const jobMajorCol = ['분야', '직업']
   const gotoHome = () => {
     resetUser();
     resetWonScore();
@@ -24,21 +26,6 @@ const Finish = () => {
     console.log(userValue, wonScoreValue, jobValue, majorValue);
     history.push('/');
   };
-
-  /* 
-  - Table Component
-  ex1) only col
-  col = ['이름', '성별', '검사일']
-  data = ['앨리스', '여', '2021.08.25']
-  ex2) col and row
-  col = ['분야', '직업']
-  row = ['고졸', '대졸', '대학원졸']
-  data = [[[1, 'a'], [2, 'b']], [[3, 'c']], [[4, 'd'], [5, 'e'], [6, 'f']]]
-
-  interpretationNames는 그대로 label로 넘기기
-  educationLevelNames는 1부터 매칭
-  majorNames는 0부터 매칭
-  */
 
   const parseJobMajor = (value, names) => {
     let dict = { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [] };
@@ -64,8 +51,6 @@ const Finish = () => {
   return (
     <>
       <h1>직업가치관검사 결과표</h1>
-      <p>{parseJobMajor(jobValue, educationLevelNames)}</p>
-      <p>{parseJobMajor(majorValue, majorNames)}</p>
       <UserTable userValue={userValue} />
       <p>
         직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의
@@ -78,7 +63,9 @@ const Finish = () => {
       <Chart labels={interpretationNames} datas={Object.values(wonScoreValue).map(Number)} />
       <h3>가치관과 관련이 높은 직업</h3>
       <h4>종사자 평균 학력별</h4>
+      <JobMajorTable col={jobMajorCol} values={parseJobMajor(jobValue, educationLevelNames)}/>
       <h4>종사자 평균 전공별</h4>
+      <JobMajorTable col={jobMajorCol} values={parseJobMajor(majorValue, majorNames)}/>
       <Button name="다시 검사하기" disabled={false} onClick={gotoHome} />
     </>
   );
