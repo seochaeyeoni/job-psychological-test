@@ -18,16 +18,19 @@ const Test = () => {
   const [answerList, setAnswerList] = useState(new Array(28).fill(0));
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(true);
-  const progress = (100 / 6) * page;
+  const [progress, setProgress] = useState(0);
+  //const progress = parseInt((100 / 6) * page);
 
   useEffect(() => {
     setStatus(answerList.slice((page - 1) * 5, 5 * page).includes(0));
   }, [answerList, page]);
 
   const radioChange = (index, answer) => {
-    const newAnswerList = [...answerList];
+    let newAnswerList = [...answerList];
     // eslint-disable-next-line no-self-assign
-    setAnswerList(newAnswerList.map((c, i) => (i === index ? (c = answer) : (c = c))));
+    newAnswerList = newAnswerList.map((c, i) => (i === index ? (c = answer) : (c = c)));
+    setAnswerList(newAnswerList);
+    setProgress(parseInt((newAnswerList.filter(elem => 0 !== elem).length * 100) / 28));
   };
 
   const previousPage = () => {

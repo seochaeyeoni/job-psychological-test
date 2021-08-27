@@ -1,9 +1,11 @@
 const ProgressBar = ({ percent }) => {
+
   return (
     <>
       <h2 style={{display: "inline", float: "left"}}>검사예시</h2>
       <h2 style={{display: "inline", float: "right"}}>{percent}%</h2>
-      <div style={{display: "inline-block", width: "100%"}} class="progress">
+      <div style={{display: "inline-block", width: "100%"}}></div>
+      <div class="progress" >
         <div
           class="progress-bar progress-bar-striped progress-bar-animated"
           role="progressbar"
