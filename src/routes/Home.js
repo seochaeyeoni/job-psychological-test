@@ -5,6 +5,7 @@ import RadioButton from '../components/RadioButton';
 import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userState } from '../atom';
+import styled from 'styled-components';
 
 const Home = () => {
   const history = useHistory();
@@ -45,16 +46,43 @@ const Home = () => {
     setUser(temp);
   };
 
+  const Outer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 800px;
+    background-color: aliceblue;
+  `;
+
+  const Inner = styled.div`
+    text-align: center;
+    width: 60%;
+    padding: 10%;
+    background-color: white;
+  `;
+
+  const H1 = styled.h1`
+    padding: 5px;
+  `;
+
+  const H5 = styled.h5`
+    padding-top: 10px;
+    padding-bottom: 3px;
+  `;
+
   return (
-    <>
-      <h1>직업가치관검사</h1>
-      <h5>이름</h5>
-      <Input onChange={inputChange} />
-      <h5>성별</h5>
-      <RadioButton value="남자" group="gender" onChange={radioChange} />
-      <RadioButton value="여자" group="gender" onChange={radioChange} />
-      <Button name="검사시작" disabled={status} onClick={checkUser} />
-    </>
+    <Outer>
+      <Inner>
+        <H1>직업가치관검사</H1>
+        <H5>이름</H5>
+        <Input onChange={inputChange} />
+        <H5>성별</H5>
+        <RadioButton value="남자" group="gender" onChange={radioChange} />
+        <RadioButton value="여자" group="gender" onChange={radioChange} />
+        <Button name="검사시작" disabled={status} onClick={checkUser} />
+      </Inner>
+    </Outer>
   );
 };
 
