@@ -12,7 +12,7 @@ const Question = ({
 }) => {
   return (
     <div>
-      <h2>{Question}</h2>
+      <h5 style={{fontWeight: "bold"}}>{Question}</h5>
       <RadioButton
         value={value1}
         group={group}

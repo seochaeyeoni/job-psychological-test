@@ -6,6 +6,7 @@ import { interpretationNames, educationLevelNames, majorNames } from '../constan
 import Chart from '../components/Chart';
 import UserTable from '../components/UserTable';
 import JobMajorTable from '../components/JobMajorTable';
+import { TestOuter, Inner } from '../styles/globalStyles';
 
 const Finish = () => {
   const userValue = useRecoilValue(userState);
@@ -17,7 +18,7 @@ const Finish = () => {
   const resetJob = useResetRecoilState(userState);
   const resetMajor = useResetRecoilState(userState);
   const history = useHistory();
-  const jobMajorCol = ['분야', '직업']
+  const jobMajorCol = ['분야', '직업'];
   const gotoHome = () => {
     resetUser();
     resetWonScore();
@@ -49,25 +50,27 @@ const Finish = () => {
   };
 
   return (
-    <>
-      <h1>직업가치관검사 결과표</h1>
-      <UserTable userValue={userValue} />
-      <p>
-        직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의
-        직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다. 직업가치관검사는
-        여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. 또한
-        본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를
-        제공합니다.
-      </p>
-      <h3>직업가치관 결과</h3>
-      <Chart labels={interpretationNames} datas={Object.values(wonScoreValue).map(Number)} />
-      <h3>가치관과 관련이 높은 직업</h3>
-      <h4>종사자 평균 학력별</h4>
-      <JobMajorTable col={jobMajorCol} values={parseJobMajor(jobValue, educationLevelNames)}/>
-      <h4>종사자 평균 전공별</h4>
-      <JobMajorTable col={jobMajorCol} values={parseJobMajor(majorValue, majorNames)}/>
-      <Button name="다시 검사하기" disabled={false} onClick={gotoHome} />
-    </>
+    <TestOuter>
+      <Inner>
+        <h1>직업가치관검사 결과표</h1>
+        <UserTable userValue={userValue} />
+        <p>
+          직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의
+          직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다.
+          직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를
+          알려줍니다. 또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해
+          생각해 볼 기회를 제공합니다.
+        </p>
+        <h3>직업가치관 결과</h3>
+        <Chart labels={interpretationNames} datas={Object.values(wonScoreValue).map(Number)} />
+        <h3>가치관과 관련이 높은 직업</h3>
+        <h4>종사자 평균 학력별</h4>
+        <JobMajorTable col={jobMajorCol} values={parseJobMajor(jobValue, educationLevelNames)} />
+        <h4>종사자 평균 전공별</h4>
+        <JobMajorTable col={jobMajorCol} values={parseJobMajor(majorValue, majorNames)} />
+        <Button name="다시 검사하기" disabled={false} onClick={gotoHome} />
+      </Inner>
+    </TestOuter>
   );
 };
 

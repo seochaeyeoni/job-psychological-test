@@ -5,23 +5,7 @@ import RadioButton from '../components/RadioButton';
 import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userState } from '../atom';
-import styled from 'styled-components';
-
-  const Outer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 800px;
-    background-color: aliceblue;
-  `;
-
-  const Inner = styled.div`
-    text-align: center;
-    width: 60%;
-    padding: 10%;
-    background-color: white;
-  `;
+import { Outer, Inner } from '../styles/globalStyles';
 
 const Home = () => {
   const history = useHistory();

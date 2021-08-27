@@ -1,8 +1,7 @@
 import React from 'react';
-
 const Button = ({ name, disabled, onClick }) => {
   return (
-    <button type="button" class="btn btn-lg btn-primary" disabled={disabled} onClick={onClick}>
+    <button style={{margin: "20px"}} type="button" class="btn btn-lg btn-primary" disabled={disabled} onClick={onClick}>
       {name}
     </button>
   );

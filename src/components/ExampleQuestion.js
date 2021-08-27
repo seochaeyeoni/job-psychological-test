@@ -9,7 +9,7 @@ const ExampleQuestion = ({
 }) => {
   return (
     <div>
-      <h2>{Question}</h2>
+      <h4>{Question}</h4>
       <RadioButton
         value={value1}
         group={group}
