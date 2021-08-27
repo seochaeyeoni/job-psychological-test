@@ -4,7 +4,7 @@ import Input from '../components/Input';
 import RadioButton from '../components/RadioButton';
 import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import userState from '../atom';
+import { userState } from '../atom';
 
 const Home = () => {
   const history = useHistory();
