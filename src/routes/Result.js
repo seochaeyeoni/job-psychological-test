@@ -3,6 +3,7 @@ import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { useHistory } from 'react-router-dom';
 import { userState, wonScoreState, jobState, majorState } from '../atom';
 import { interpretationNames, educationLevelNames, majorNames } from '../constants';
+import Chart from '../components/Chart';
 
 const Finish = () => {
   const userValue = useRecoilValue(userState);
@@ -54,6 +55,7 @@ const Finish = () => {
         제공합니다.
       </p>
       <h3>직업가치관 결과</h3>
+      <Chart labels={interpretationNames} datas={Object.values(wonScoreValue).map(Number)}/>
       <h3>가치관과 관련이 높은 직업</h3>
       <h2>종사자 평균 학력별</h2>
       <h2>종사자 평균 전공별</h2>
