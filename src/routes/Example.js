@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { questionState } from '../atom'
 import { getQuestions } from '../api/career';
+import { Outer, Inner } from '../styles/globalStyles';
 
 const Example = () => {
     const history = useHistory();
@@ -24,7 +25,8 @@ const Example = () => {
     }
 
   return (
-    <>
+    <Outer>
+      <Inner>
       <ProgressBar percent={0} />
       <h5>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.</h5>
       <ExampleQuestion
@@ -35,7 +37,8 @@ const Example = () => {
         onClick={radioChange}
       />
       <Button name="검사시작" disabled={status} onClick={startTest}/>
-    </>
+      </Inner>
+    </Outer>
   );
 };
 

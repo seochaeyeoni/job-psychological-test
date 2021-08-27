@@ -5,6 +5,7 @@ import RadioButton from '../components/RadioButton';
 import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userState } from '../atom';
+import { Outer, Inner } from '../styles/globalStyles';
 
 const Home = () => {
   const history = useHistory();
@@ -45,16 +46,19 @@ const Home = () => {
     setUser(temp);
   };
 
+
   return (
-    <>
-      <h1>직업가치관검사</h1>
-      <h5>이름</h5>
-      <Input onChange={inputChange} />
-      <h5>성별</h5>
-      <RadioButton value="남자" group="gender" onChange={radioChange} />
-      <RadioButton value="여자" group="gender" onChange={radioChange} />
-      <Button name="검사시작" disabled={status} onClick={checkUser} />
-    </>
+    <Outer>
+      <Inner>
+        <h1>직업가치관검사</h1>
+        <h5>이름</h5>
+        <Input onChange={inputChange} />
+        <h5>성별</h5>
+        <RadioButton value="남자" group="gender" onChange={radioChange} />
+        <RadioButton value="여자" group="gender" onChange={radioChange} />
+        <Button name="검사시작" disabled={status} onClick={checkUser} />
+      </Inner>
+    </Outer>
   );
 };
 

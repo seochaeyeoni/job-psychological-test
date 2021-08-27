@@ -2,6 +2,8 @@ import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import './App.css';
+import GlobalFonts from "./styles/fonts/fonts";
+import GlobalStyle from './styles/globalStyles';
 import Home from './routes/Home';
 import Example from './routes/Example';
 import Test from './routes/Test';
@@ -11,6 +13,8 @@ import Result from './routes/Result';
 function App() {
   return (
     <HashRouter>
+      <GlobalStyle />
+      <GlobalFonts />
       <RecoilRoot>
         <Route exact path="/" component={Home} />
         <Route exact path="/example" component={Example} />

@@ -7,6 +7,7 @@ import Question from '../components/Question';
 import { useHistory } from 'react-router-dom';
 import { getResult } from '../api/career';
 import { wonScoreState, jobState, majorState } from '../atom';
+import { TestOuter, Inner } from '../styles/globalStyles';
 
 const Test = () => {
   const history = useHistory();
@@ -89,12 +90,14 @@ const Test = () => {
   };
 
   return (
-    <>
-      <ProgressBar percent={progress} />
-      {questions()}
-      <Button name="이전" disabled={false} onClick={previousPage} />
-      <Button name="다음" disabled={status} onClick={nextPage} />
-    </>
+    <TestOuter>
+      <Inner>
+        <ProgressBar percent={progress} />
+        {questions()}
+        <Button name="이전" disabled={false} onClick={previousPage} />
+        <Button name="다음" disabled={status} onClick={nextPage} />
+      </Inner>
+    </TestOuter>
   );
 };
 
