@@ -29,18 +29,17 @@ const parseQuestions = result => {
   }));
 };
 
-export const getResult = async (body, storeWonscores, storeJobs, storeMajors) => {
-  postReport(body).then(url =>
-    getWonScore(url).then(values => {
-      storeWonscores(values[0]);
-      getAverageJobs(values[1], values[2]).then(jobs => {
-        storeJobs(jobs);
-      });
-      getAverageMajors(values[1], values[2]).then(majors => {
-        storeMajors(majors);
-      });
-    }),
-  );
+export const getResult = async (body, storeWonscores, storeJobs, storeMajors, gotoFinish) => {
+  const url =  await postReport(body);
+  const values = await getWonScore(url);
+  storeWonscores(values[0])
+  const [jobs, majors] = await Promise.all([
+    getAverageJobs(values[1], values[2]),
+    getAverageMajors(values[1], values[2])
+  ])
+  storeJobs(jobs);
+  storeMajors(majors);
+  gotoFinish();
 };
 
 const postReport = async data => {

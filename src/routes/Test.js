@@ -41,10 +41,10 @@ const Test = () => {
   const nextPage = () => {
     if (page < 6) {
       setPage(page + 1);
-    } else goToFinish();
+    } else getReport();
   };
 
-  const goToFinish = () => {
+  const getReport = () => {
     // api로 post 해서 recoil에 저장하고
     // result로 넘기기
     const answers = answerList.map((value, index) => `B${index + 1}=${value}`).join(' ');
@@ -56,9 +56,12 @@ const Test = () => {
       startDtm: 0,
       answers,
     };
-    getResult(body, storeWonscores, storeJobs, storeMajors);
-    history.push('/finish');
+    getResult(body, storeWonscores, storeJobs, storeMajors, gotoFinish);
   };
+
+  const gotoFinish = () => {
+    history.push('/finish');
+  }
 
   const storeWonscores = wonScores => {
     setWonScore(wonScores);

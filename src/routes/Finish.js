@@ -47,6 +47,7 @@ const Finish = () => {
           알려주고,
         </h5>
         <h5>중요 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.</h5>
+        {prevResult()}
         <Button name="결과보기" disabled={false} onClick={gotoResult} />
       </Inner>
     </Outer>
