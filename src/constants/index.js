@@ -10,6 +10,7 @@ export const interpretationNames = [
 ];
 
 export const educationLevelNames = [
+  "",
   "중졸이하",
   "고졸",
   "전문대졸",
