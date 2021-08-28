@@ -27,7 +27,7 @@ const Example = () => {
   return (
     <Outer>
       <Inner>
-      <ProgressBar percent={0} />
+      <ProgressBar title='검사예시' percent={0} />
       <h5>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.</h5>
       <ExampleQuestion
         Question="두개 가치 중에 자신에게 더 중요한 가치를 선택하세요."
