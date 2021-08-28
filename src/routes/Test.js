@@ -18,16 +18,19 @@ const Test = () => {
   const [answerList, setAnswerList] = useState(new Array(28).fill(0));
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(true);
-  const progress = (100 / 6) * page;
+  const [progress, setProgress] = useState(0);
+  //const progress = parseInt((100 / 6) * page);
 
   useEffect(() => {
     setStatus(answerList.slice((page - 1) * 5, 5 * page).includes(0));
   }, [answerList, page]);
 
   const radioChange = (index, answer) => {
-    const newAnswerList = [...answerList];
+    let newAnswerList = [...answerList];
     // eslint-disable-next-line no-self-assign
-    setAnswerList(newAnswerList.map((c, i) => (i === index ? (c = answer) : (c = c))));
+    newAnswerList = newAnswerList.map((c, i) => (i === index ? (c = answer) : (c = c)));
+    setAnswerList(newAnswerList);
+    setProgress(parseInt((newAnswerList.filter(elem => 0 !== elem).length * 100) / 28));
   };
 
   const previousPage = () => {
@@ -38,10 +41,10 @@ const Test = () => {
   const nextPage = () => {
     if (page < 6) {
       setPage(page + 1);
-    } else goToFinish();
+    } else getReport();
   };
 
-  const goToFinish = () => {
+  const getReport = () => {
     // api로 post 해서 recoil에 저장하고
     // result로 넘기기
     const answers = answerList.map((value, index) => `B${index + 1}=${value}`).join(' ');
@@ -53,9 +56,12 @@ const Test = () => {
       startDtm: 0,
       answers,
     };
-    getResult(body, storeWonscores, storeJobs, storeMajors);
-    history.push('/finish');
+    getResult(body, storeWonscores, storeJobs, storeMajors, gotoFinish);
   };
+
+  const gotoFinish = () => {
+    history.push('/finish');
+  }
 
   const storeWonscores = wonScores => {
     setWonScore(wonScores);

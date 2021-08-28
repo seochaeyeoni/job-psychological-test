@@ -52,7 +52,7 @@ const Finish = () => {
   return (
     <TestOuter>
       <Inner>
-        <h1>직업가치관검사 결과표</h1>
+        <h1>👍직업가치관검사 결과표📝</h1>
         <UserTable userValue={userValue} />
         <p>
           직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의
@@ -63,10 +63,10 @@ const Finish = () => {
         </p>
         <h3>직업가치관 결과</h3>
         <Chart labels={interpretationNames} datas={Object.values(wonScoreValue).map(Number)} />
-        <h3>가치관과 관련이 높은 직업</h3>
-        <h4>종사자 평균 학력별</h4>
+        <h3 style={{marginTop: "20px"}}>가치관과 관련이 높은 직업</h3>
+        <h4 style={{backgroundColor: "ivory"}}>종사자 평균 학력별</h4>
         <JobMajorTable col={jobMajorCol} values={parseJobMajor(jobValue, educationLevelNames)} />
-        <h4>종사자 평균 전공별</h4>
+        <h4 style={{backgroundColor: "ivory"}}>종사자 평균 전공별</h4>
         <JobMajorTable col={jobMajorCol} values={parseJobMajor(majorValue, majorNames)} />
         <Button name="다시 검사하기" disabled={false} onClick={gotoHome} />
       </Inner>

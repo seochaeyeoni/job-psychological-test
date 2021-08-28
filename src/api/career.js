@@ -15,7 +15,7 @@ export const getQuestions = async () => {
   try {
     return parseQuestions(res.data.RESULT);
   } catch {
-    return Error(res.ERROR_REASON);
+    alert(Error(res.ERROR_REASON));
   }
 };
 
@@ -29,18 +29,17 @@ const parseQuestions = result => {
   }));
 };
 
-export const getResult = async (body, storeWonscores, storeJobs, storeMajors) => {
-  postReport(body).then(url =>
-    getWonScore(url).then(values => {
-      storeWonscores(values[0]);
-      getAverageJobs(values[1], values[2]).then(jobs => {
-        storeJobs(jobs);
-      });
-      getAverageMajors(values[1], values[2]).then(majors => {
-        storeMajors(majors);
-      });
-    }),
-  );
+export const getResult = async (body, storeWonscores, storeJobs, storeMajors, gotoFinish) => {
+  const url =  await postReport(body);
+  const values = await getWonScore(url);
+  storeWonscores(values[0])
+  const [jobs, majors] = await Promise.all([
+    getAverageJobs(values[1], values[2]),
+    getAverageMajors(values[1], values[2])
+  ])
+  storeJobs(jobs);
+  storeMajors(majors);
+  gotoFinish();
 };
 
 const postReport = async data => {
@@ -48,7 +47,7 @@ const postReport = async data => {
   try {
     return res.data.RESULT.url;
   } catch {
-    return Error(res.ERROR_REASON);
+    alert(Error(res.ERROR_REASON));
   }
 };
 
@@ -61,8 +60,7 @@ const getWonScore = async url => {
       .get(url.replace('web', 'api').replace('/value', ''));
     return parseWonScore(res.data.result.wonScore);
   } catch (e) {
-    console.log(e);
-    return Error(e);
+    alert(Error(e));
   }
 };
 
@@ -91,7 +89,7 @@ const getAverageJobs = async (result1, result2) => {
       });
     return res.data;
   } catch (e) {
-    return Error(e);
+    alert(Error(e));
   }
 };
 
@@ -106,6 +104,6 @@ const getAverageMajors = async (result1, result2) => {
       });
     return res.data;
   } catch (e) {
-    return Error(e);
+    alert(Error(e));
   }
 };
