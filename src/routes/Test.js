@@ -98,7 +98,7 @@ const Test = () => {
   return (
     <TestOuter>
       <Inner>
-        <ProgressBar percent={progress} />
+        <ProgressBar title='검사진행' percent={progress} />
         {questions()}
         <Button name="이전" disabled={false} onClick={previousPage} />
         <Button name="다음" disabled={status} onClick={nextPage} />
