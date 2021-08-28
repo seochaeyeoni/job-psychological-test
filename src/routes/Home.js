@@ -51,12 +51,13 @@ const Home = () => {
   return (
     <Outer>
       <Inner>
-        <h1>직업가치관검사</h1>
+        <h1>📊직업가치관검사✅</h1>
         <h5>이름</h5>
         <Input onChange={inputChange} />
         <h5>성별</h5>
-        <RadioButton value="남자" group="gender" hiddenValue="남자" onChange={radioChange} />
-        <RadioButton value="여자" group="gender" hiddenValue="여자" onChange={radioChange} />
+        <RadioButton value="🙆‍♂️남자" group="gender" hiddenValue="남자" onChange={radioChange} />
+        <RadioButton value="🙆‍♀️여자" group="gender" hiddenValue="여자" onChange={radioChange} />
+        <div></div>
         <Button name="검사시작" disabled={status} onClick={checkUser} />
       </Inner>
     </Outer>
