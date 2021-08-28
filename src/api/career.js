@@ -15,7 +15,7 @@ export const getQuestions = async () => {
   try {
     return parseQuestions(res.data.RESULT);
   } catch {
-    return Error(res.ERROR_REASON);
+    alert(Error(res.ERROR_REASON));
   }
 };
 
@@ -47,7 +47,7 @@ const postReport = async data => {
   try {
     return res.data.RESULT.url;
   } catch {
-    return Error(res.ERROR_REASON);
+    alert(Error(res.ERROR_REASON));
   }
 };
 
@@ -60,8 +60,7 @@ const getWonScore = async url => {
       .get(url.replace('web', 'api').replace('/value', ''));
     return parseWonScore(res.data.result.wonScore);
   } catch (e) {
-    console.log(e);
-    return Error(e);
+    alert(Error(e));
   }
 };
 
@@ -90,7 +89,7 @@ const getAverageJobs = async (result1, result2) => {
       });
     return res.data;
   } catch (e) {
-    return Error(e);
+    alert(Error(e));
   }
 };
 
@@ -105,6 +104,6 @@ const getAverageMajors = async (result1, result2) => {
       });
     return res.data;
   } catch (e) {
-    return Error(e);
+    alert(Error(e));
   }
 };
