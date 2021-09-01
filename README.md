@@ -2,9 +2,10 @@
 
 [직업심리검사 API](https://www.career.go.kr/cnet/front/openapi/openApiTestCenter.do)를 사용하여 문항 요청, 결과 요청, 결과 분석을 위한 학력별, 전공별 직업 정보 요청을 통해 검사 결과를 보여주는 리액트 웹 서비스입니다.
 
-### 깃헙 배포버전 보러가기
+### 깃헙 배포버전 보러가기👇
 
-👉[https://seochaeyeoni.github.io/job-psychological-test/](https://seochaeyeoni.github.io/job-psychological-test/)👈
+[![image](https://user-images.githubusercontent.com/64145112/131654603-7c9cb531-a16b-48cd-b71d-4e5f9ddd0409.png)](https://seochaeyeoni.github.io/job-psychological-test/)
+
 
 ### 기술 스택
 
@@ -38,6 +39,10 @@
 - refactor/해당기능 - 실수 수정, 코드 리팩토링 등 수정과 관련된 사항
 - fix/#issue_number - 발행한 이슈과 관련된 문제 해결
 
-- 엘리스 프로젝트 기간 중 MR 기록(at 깃랩)
-![MR1](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2465b0ca-78d4-413e-a263-b73f484f8b01/Untitled.png)
-![MR2](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec5b3530-8f46-458f-b978-068d4b09bdf1/Untitled.png)
+<details>
+<summary>엘리스 프로젝트 기간 중 MR 기록(at 깃랩)</summary>
+<div markdown="1">       
+![MR1](https://user-images.githubusercontent.com/64145112/131653923-2a8fe1d7-c100-4bef-90de-3a5c255b3c37.png)
+![MR2](https://user-images.githubusercontent.com/64145112/131654085-b5eb33bb-6d3b-410f-92da-d92cd9c3bace.png)
+</div>
+</details>
