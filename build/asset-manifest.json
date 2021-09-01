@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/job-psychological-test/static/css/main.7d180cbf.chunk.css",
-    "main.js": "/job-psychological-test/static/js/main.c4368ebe.chunk.js",
-    "main.js.map": "/job-psychological-test/static/js/main.c4368ebe.chunk.js.map",
+    "main.js": "/job-psychological-test/static/js/main.39abe0be.chunk.js",
+    "main.js.map": "/job-psychological-test/static/js/main.39abe0be.chunk.js.map",
     "runtime-main.js": "/job-psychological-test/static/js/runtime-main.8492041b.js",
     "runtime-main.js.map": "/job-psychological-test/static/js/runtime-main.8492041b.js.map",
-    "static/js/2.aa20718b.chunk.js": "/job-psychological-test/static/js/2.aa20718b.chunk.js",
-    "static/js/2.aa20718b.chunk.js.map": "/job-psychological-test/static/js/2.aa20718b.chunk.js.map",
+    "static/js/2.b7f7c413.chunk.js": "/job-psychological-test/static/js/2.b7f7c413.chunk.js",
+    "static/js/2.b7f7c413.chunk.js.map": "/job-psychological-test/static/js/2.b7f7c413.chunk.js.map",
     "static/js/3.3bb9bbc2.chunk.js": "/job-psychological-test/static/js/3.3bb9bbc2.chunk.js",
     "static/js/3.3bb9bbc2.chunk.js.map": "/job-psychological-test/static/js/3.3bb9bbc2.chunk.js.map",
     "index.html": "/job-psychological-test/index.html",
     "static/css/main.7d180cbf.chunk.css.map": "/job-psychological-test/static/css/main.7d180cbf.chunk.css.map",
-    "static/js/2.aa20718b.chunk.js.LICENSE.txt": "/job-psychological-test/static/js/2.aa20718b.chunk.js.LICENSE.txt",
+    "static/js/2.b7f7c413.chunk.js.LICENSE.txt": "/job-psychological-test/static/js/2.b7f7c413.chunk.js.LICENSE.txt",
     "static/media/NanumGothic.f727c12e.woff": "/job-psychological-test/static/media/NanumGothic.f727c12e.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.8492041b.js",
-    "static/js/2.aa20718b.chunk.js",
+    "static/js/2.b7f7c413.chunk.js",
     "static/css/main.7d180cbf.chunk.css",
-    "static/js/main.c4368ebe.chunk.js"
+    "static/js/main.39abe0be.chunk.js"
   ]
 }
